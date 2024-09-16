@@ -1,7 +1,11 @@
 import nextcord, os
 from nextcord.ext import commands
+from dotenv import load_dotenv
+import requests
 
-TESTING_GUILD_ID = os.environ['TESTING_GUILD_ID']
+load_dotenv()
+
+TESTING_GUILD_ID = os.getenv('TESTING_GUILD_ID')
 
 intents = nextcord.Intents.all()
 intents.members = True
@@ -13,12 +17,14 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f'We have logged in as {bot.user}')
 
-@bot.slash_command(description="My first slash command", guild_ids=[TESTING_GUILD_ID])
-async def hello(interaction: nextcord.Interaction):
-    await interaction.send("Hello!")
-
 @bot.command()
 async def connection(ctx):
     await ctx.send('Hello!')
 
-bot.run(os.environ['TOKEN'])
+@bot.command()
+async def augment(ctx):
+    response = requests.get("https://ddragon.leagueoflegends.com/cdn/13.24.1/data/en_US/tft-arena.json")
+    print(response.content)
+    await ctx.send(response)
+
+bot.run(os.getenv('TOKEN'))
