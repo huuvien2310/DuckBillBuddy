@@ -20,22 +20,28 @@ async def on_ready():
 
 
 @bot.command()
-async def connection(ctx):
+async def hello(ctx):
     await ctx.send("Hello!")
 
 
 @bot.command()
-async def augment(ctx):
-    response = requests.get(
-        "https://ddragon.leagueoflegends.com/cdn/13.24.1/data/en_US/tft-arena.json"
+async def bagsize(ctx):
+    costs = [30, 25, 18, 10, 9]
+
+    message = "\n".join(
+        f"{cost} cost: {size}" for cost, size in enumerate(costs, start=1)
     )
-    print(response.content)
-    await ctx.send(response)
+    await ctx.send(message)
 
 
 @bot.command()
-async def image(ctx):
-    await ctx.send(file=nextcord.File('f0mpjw4ddzv41.png'))
+async def missedconnection(ctx):
+    await ctx.send(file=nextcord.File("f0mpjw4ddzv41.png"))
+
+
+@bot.command()
+async def missedconnectionxerath(ctx):
+    await ctx.send(file=nextcord.File("f0mpjw4ddzv41.png"))
 
 
 bot.run(os.getenv("TOKEN"))
