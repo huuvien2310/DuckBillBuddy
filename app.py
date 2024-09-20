@@ -34,6 +34,18 @@ async def bagsize(ctx):
     await ctx.send(message)
 
 
+# TODO
+@bot.command()
+async def loottable(ctx):
+    await ctx.send()
+
+
+# TODO
+@bot.command()
+async def loot(ctx):
+    await ctx.send()
+
+
 @bot.command()
 async def missedconnection(ctx):
     await ctx.send(file=nextcord.File("f0mpjw4ddzv41.png"))
