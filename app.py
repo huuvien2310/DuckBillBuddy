@@ -40,15 +40,14 @@ async def loottable(ctx):
     await ctx.send()
 
 
-# TODO
 @bot.command()
-async def loot(ctx):
-    await ctx.send()
+async def fortune(ctx):
+    await ctx.send(file=nextcord.File("fortune.png"))
 
 
 @bot.command()
 async def missedconnection(ctx):
-    await ctx.send(file=nextcord.File("f0mpjw4ddzv41.png"))
+    await ctx.send(file=nextcord.File("missedconnection.png"))
 
 
 @bot.command()
