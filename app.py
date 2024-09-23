@@ -33,7 +33,7 @@ async def bagsize(ctx):
     )
     await ctx.send(message)
 
-
+# TODO: Create a spreadsheet with all the champs and their appearance in each set so far, just for fun
 # TODO
 @bot.command()
 async def loottable(ctx):
