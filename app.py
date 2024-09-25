@@ -2,6 +2,7 @@ import nextcord, os
 from nextcord.ext import commands
 from dotenv import load_dotenv
 import requests
+import set12
 
 load_dotenv()
 
@@ -37,12 +38,13 @@ async def bagsize(ctx):
 # TODO
 @bot.command()
 async def loottable(ctx):
-    await ctx.send()
+    await ctx.send("")
 
 
 @bot.command()
 async def fortune(ctx):
-    await ctx.send(file=nextcord.File("fortune.png"))
+    print(set12.fortunetable())
+    await ctx.send(set12.fortunetable())
 
 
 @bot.command()
