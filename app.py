@@ -43,7 +43,6 @@ async def loottable(ctx):
 
 @bot.command()
 async def fortune(ctx):
-    print(set12.fortunetable())
     await ctx.send(set12.fortunetable())
 
 
