@@ -3,6 +3,7 @@ from nextcord.ext import commands
 from dotenv import load_dotenv
 from io import BytesIO
 import requests
+import aiohttp
 import set12
 
 load_dotenv()
@@ -50,12 +51,17 @@ async def fortune(ctx):
 
 @bot.command()
 async def goldenquest(ctx):
-    imgur_url = "https://i.imgur.com/zS6ZmNK.png"
-    # response = requests.get(imgur_url)
-    # # img_data = BytesIO(response.content)
-    # file = nextcord.File(imgur_url, "goldenquest.png")
-    # await ctx.send(file=file)
-    await ctx.send(imgur_url)
+    imgur_url = set12.golden_quest()
+    async with aiohttp.ClientSession() as session:
+        async with session.get(imgur_url) as resp:
+            if resp.status != 200:
+                return await ctx.send('Could not download file...')
+            data = BytesIO(await resp.read())
+
+            data.seek(0)
+
+            await ctx.send(file=nextcord.File(data, 'goldenquest.png'))
+
 
 @bot.command()
 async def missedconnection(ctx):

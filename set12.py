@@ -8,4 +8,4 @@ def patch_fourteen_nineteen():
     return ""
 
 def golden_quest():
-    return "https://i.imgur.com/zS6ZmNK.png"
+    return "https://i.postimg.cc/6qsvNT1K/goldenquest.png"
