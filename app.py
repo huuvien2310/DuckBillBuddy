@@ -1,6 +1,7 @@
 import nextcord, os
 from nextcord.ext import commands
 from dotenv import load_dotenv
+from io import BytesIO
 import requests
 import set12
 
@@ -34,6 +35,7 @@ async def bagsize(ctx):
     )
     await ctx.send(message)
 
+
 # TODO: Create a spreadsheet with all the champs and their appearance in each set so far, just for fun
 # TODO
 @bot.command()
@@ -45,6 +47,15 @@ async def loottable(ctx):
 async def fortune(ctx):
     await ctx.send(set12.fortunetable())
 
+
+@bot.command()
+async def goldenquest(ctx):
+    imgur_url = "https://i.imgur.com/zS6ZmNK.png"
+    # response = requests.get(imgur_url)
+    # # img_data = BytesIO(response.content)
+    # file = nextcord.File(imgur_url, "goldenquest.png")
+    # await ctx.send(file=file)
+    await ctx.send(imgur_url)
 
 @bot.command()
 async def missedconnection(ctx):
