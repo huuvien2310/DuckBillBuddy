@@ -37,8 +37,6 @@ async def bagsize(ctx):
     await ctx.send(message)
 
 
-# TODO: Create a spreadsheet with all the champs and their appearance in each set so far, just for fun
-# TODO
 @bot.command()
 async def loottable(ctx):
     await ctx.send("")
@@ -55,12 +53,10 @@ async def goldenquest(ctx):
     async with aiohttp.ClientSession() as session:
         async with session.get(imgur_url) as resp:
             if resp.status != 200:
-                return await ctx.send('Could not download file...')
+                return await ctx.send("Could not download file...")
             data = BytesIO(await resp.read())
 
-            data.seek(0)
-
-            await ctx.send(file=nextcord.File(data, 'goldenquest.png'))
+            await ctx.send(file=nextcord.File(data, "goldenquest.png"))
 
 
 @bot.command()
