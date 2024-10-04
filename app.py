@@ -49,15 +49,26 @@ async def fortune(ctx):
 
 @bot.command()
 async def goldenquest(ctx):
-    imgur_url = set12.golden_quest()
+    url = set12.golden_quest()
     async with aiohttp.ClientSession() as session:
-        async with session.get(imgur_url) as resp:
+        async with session.get(url) as resp:
             if resp.status != 200:
                 return await ctx.send("Could not download file...")
             data = BytesIO(await resp.read())
 
             await ctx.send(file=nextcord.File(data, "goldenquest.png"))
 
+
+@bot.command()
+async def calltochaos(ctx):
+    url = set12.call_to_chaos()
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as resp:
+            if resp.status != 200:
+                return await ctx.send("Could not download file...")
+            data = BytesIO(await resp.read())
+
+            await ctx.send(file=nextcord.File(data, "calltochaos.png"))
 
 @bot.command()
 async def missedconnection(ctx):
