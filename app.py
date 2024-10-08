@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from io import BytesIO
 import requests
 import aiohttp
-import set12
+import utils
 
 load_dotenv()
 
@@ -44,31 +44,17 @@ async def loottable(ctx):
 
 @bot.command()
 async def fortune(ctx):
-    await ctx.send(set12.fortunetable())
+    await ctx.send("")
 
 
 @bot.command()
 async def goldenquest(ctx):
-    url = set12.golden_quest()
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp:
-            if resp.status != 200:
-                return await ctx.send("Could not download file...")
-            data = BytesIO(await resp.read())
-
-            await ctx.send(file=nextcord.File(data, "goldenquest.png"))
+    await utils.send_image(ctx, "goldenquest")
 
 
 @bot.command()
 async def calltochaos(ctx):
-    url = set12.call_to_chaos()
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as resp:
-            if resp.status != 200:
-                return await ctx.send("Could not download file...")
-            data = BytesIO(await resp.read())
-
-            await ctx.send(file=nextcord.File(data, "calltochaos.png"))
+    utils.send_image(ctx, "calltochaos")
 
 @bot.command()
 async def missedconnection(ctx):
